@@ -1,10 +1,16 @@
+/*
+ * Copyright (c) Akveo 2019. All Rights Reserved.
+ * Licensed under the Single Application / Multi Application License.
+ * See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+ */
+
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'ngx-two-columns-layout',
   styleUrls: ['./two-columns.layout.scss'],
   template: `
-    <nb-layout windowMode>
+    <nb-layout>
       <nb-layout-header fixed>
         <ngx-header></ngx-header>
       </nb-layout-header>

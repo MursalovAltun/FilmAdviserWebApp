@@ -1,0 +1,68 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <nb-card>
+    <nb-card-header>{{ header }}</nb-card-header>
+    <nb-card-body>
+      <div class="form-group row">
+        <label class="label col-md-3">
+          Company Name
+        </label>
+        <div class="col-md-9">
+          <input nbInput type="text" fullWidth  formControlName="name"/>
+          <div *ngIf="form.get('name').invalid && (form.get('name').touched || form.get('name').touched)" class="text-danger">
+            <div *ngIf="form.get('name')['errors']['required']">Company name is required</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="form-group row">
+        <label class="label col-md-3">
+          Company Label
+        </label>
+        <div class="col-md-9">
+          <input nbInput type="text" fullWidth />
+        </div>
+      </div> -->
+
+      <!-- <div class="form-group row">
+        <label class="label col-md-3">
+          Contact name
+        </label>
+        <div class="col-md-9">
+          <input nbInput type="text" fullWidth />
+        </div>
+      </div> -->
+
+      <div class="form-group row">
+        <label class="label col-md-3">
+          E-mail
+        </label>
+        <div class="col-md-9">
+          <input nbInput type="email" fullWidth formControlName="email" />
+          <div *ngIf="form.get('email').invalid && (form.get('email').touched || form.get('email').touched)" class="text-danger">
+            <div *ngIf="form.get('email')['errors']['required']">Email is required</div>
+            <div *ngIf="form.get('email')['errors']['email']">Email is not valid</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="form-group row">
+        <label class="label col-md-3">
+          Phone
+        </label>
+        <div class="col-md-9">
+          <input nbInput type="number" fullWidth />
+        </div>
+      </div> -->
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="inline-right">
+        <button nbButton hero status="primary" type="button" (click)="dismiss()" >
+          Dismiss
+        </button>
+        <button nbButton hero status="success" type="submit" class="m-l-10">
+          Add
+        </button>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>

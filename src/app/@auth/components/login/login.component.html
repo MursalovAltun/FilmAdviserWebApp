@@ -1,0 +1,114 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<span
+  class="action-text"
+  style="
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+"
+  >Sign in</span
+>
+
+<nb-alert
+  *ngIf="showMessages.error && errors?.length && !submitted"
+  outline="danger"
+  role="alert"
+>
+  <p class="alert-title"><b>Oh snap!</b></p>
+  <div class="alert-message-list">
+    <p *ngFor="let error of errors" class="alert-message">{{ error }}</p>
+  </div>
+</nb-alert>
+
+<nb-alert
+  *ngIf="showMessages.success && messages?.length && !submitted"
+  outline="success"
+  role="alert"
+>
+  <p class="alert-title"><b>Hooray!</b></p>
+  <div class="alert-message-list">
+    <p *ngFor="let message of messages" class="alert-message">
+      {{ message }}
+    </p>
+  </div>
+</nb-alert>
+
+<div [formGroup]="loginForm" aria-labelledby="title">
+  <div class="form-control-group">
+    <label for="input-email">Email address:</label>
+    <input
+      nbInput
+      fullWidth
+      id="input-email"
+      formControlName="email"
+      [status]="email.dirty ? (email.invalid ? 'danger' : 'success') : ''"
+      [attr.aria-invalid]="email.invalid && email.touched ? true : null"
+      placeholder="Email address"
+    />
+    <ngx-validation-message
+      label="Email address"
+      [showEmail]="email?.errors?.email && email.touched"
+      [showRequired]="email?.errors?.required && email.touched"
+    ></ngx-validation-message>
+  </div>
+
+  <div class="form-control-group" style="margin-top: 1rem">
+    <span class="label-with-link smart-line">
+      <label for="input-password">Password:</label>
+      <a
+        class="forgot-password caption-2"
+        routerLink="../request-password"
+        style="line-height: 1.8rem"
+      >
+        Forgot Password?
+      </a>
+    </span>
+    <input
+      nbInput
+      fullWidth
+      id="input-password"
+      formControlName="password"
+      type="password"
+      [status]="password.dirty ? (password.invalid ? 'danger' : 'success') : ''"
+      placeholder="Password"
+    />
+    <ngx-validation-message
+      label="Password"
+      [showMinLength]="password?.hasError('minlength') && password.touched"
+      [showMaxLength]="password?.hasError('maxlength') && password.touched"
+      [showRequired]="password?.errors?.required && password.touched"
+      [minLength]="minLength"
+      [maxLength]="maxLength"
+    ></ngx-validation-message>
+  </div>
+
+  <div class="form-control-group accept-group" style="margin-top: 1rem">
+    <nb-checkbox name="rememberMe" *ngIf="rememberMe">Remember me</nb-checkbox>
+  </div>
+
+  <button
+    nbButton
+    fullWidth
+    status="primary"
+    size="large"
+    (click)="login()"
+    [disabled]="submitted || !loginForm.valid"
+    [class.btn-pulse]="submitted"
+    [nbSpinner]="loading" nbSpinnerStatus="info"
+  >
+    Log In
+  </button>
+
+  <section class="another-action" style="margin-top: 1rem;text-align: center;">
+    Not have an account?
+    <a class="text-link" routerLink="../register">Register</a>
+  </section>
+</div>

@@ -1,32 +1,38 @@
-<div class="header-container">
-  <div class="logo-container">
-    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
-      <nb-icon icon="menu-2-outline"></nb-icon>
-    </a>
-    <a class="logo" href="#" (click)="navigateHome()">Film<span>Adviser</span></a>
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<div class="header-layout {{ user?.currentCompany?.type }}">
+  <div class="header-container">
+    <div class="logo-container">
+      <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+        <nb-icon icon="menu-2-outline"></nb-icon>
+      </a>
+      <a class="logo" href="#" (click)="navigateHome()">
+        <span class="main">
+          Movie Adviser<br />
+          <span class="second">
+            by Altun Mursalov
+          </span>
+        </span>
+      </a>
+    </div>
   </div>
-</div>
 
-<div class="header-container">
-  <nb-actions size="small">
-
-    <nb-action class="control-item">
-      <nb-search type="rotate-layout"></nb-search>
-    </nb-action>
-
-    <nb-action class="control-item">
-      <button nbButton [routerLink]="['/auth/login']" routerLinkActive="router-link-active">Sign In</button>
-    </nb-action>
-
-    <nb-action class="control-item">
-      <button nbButton [routerLink]="['/auth/register']" routerLinkActive="router-link-active">Sign Up</button>
-    </nb-action>
-    <!-- <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
-      <nb-user [nbContextMenu]="userMenu"
-               [onlyPicture]="userPictureOnly"
-               [name]="user?.name"
-               [picture]="user?.picture">
-      </nb-user>
-    </nb-action> -->
-  </nb-actions>
+  <div class="header-container">
+    <nb-actions size="small">
+      <nb-action class="user-action" *nbIsGranted="['view', 'current-user']">
+        <nb-user
+          *ngIf="user"
+          [nbContextMenu]="userMenu"
+          [name]="user.login"
+          [showName]="true"
+          [picture]="'assets/images/user.svg'"
+        >
+        </nb-user>
+      </nb-action>
+    </nb-actions>
+  </div>
 </div>

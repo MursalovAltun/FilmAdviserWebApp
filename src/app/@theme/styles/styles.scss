@@ -1,3 +1,9 @@
+/*!
+ * Copyright (c) Akveo 2019. All Rights Reserved.
+ * Licensed under the Single Application / Multi Application License.
+ * See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+ */
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
 
 // themes - our custom or/and out of the box themes
@@ -18,9 +24,11 @@
 @import './layout';
 @import './overrides';
 
+// icons
+@import './icons';
+
 // install the framework and custom global styles
 @include nb-install() {
-
   // framework global styles
   @include nb-theme-global();
   @include nb-auth-global();
@@ -30,4 +38,814 @@
   @include ngx-pace-theme();
 
   @include nb-overrides();
-};
+}
+
+// text-spinners
+
+@import '~text-spinners/spinners.css';
+
+// ng-select
+@import '~@ng-select/ng-select/themes/default.theme.css';
+
+// fileicon
+
+@import './fileicon.css';
+@import './test.css';
+
+/* HELPERS */
+.form-flex-inputs > input {
+  flex: 1;
+}
+
+.header-wrapper {
+  text-transform: uppercase;
+  color: #8f9bb5;
+}
+.header-border {
+  padding: 1rem 0;
+  border: 1px solid #ddd;
+  margin: 0;
+}
+.coming-soon {
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    opacity: 0.2;
+    background-image: linear-gradient(
+      45deg,
+      #00bcd4 25%,
+      #21d3eb 25%,
+      #21d3eb 50%,
+      #00bcd4 50%,
+      #00bcd4 75%,
+      #21d3eb 75%,
+      #21d3eb 100%
+    );
+    background-size: 169.71px 169.71px;
+    z-index: 1;
+  }
+  &:after {
+    content: 'coming soon';
+    background: #2196f3;
+    position: absolute;
+    padding: 0.5rem;
+    color: #fff;
+    right: -3.8rem;
+    top: 2.2rem;
+    text-transform: uppercase;
+    width: 16rem;
+    height: 4rem;
+    line-height: 3rem;
+    text-align: center;
+    transform: rotate(45deg);
+    z-index: 2;
+  }
+}
+
+/* primitive helpers */
+
+.borderless {
+  border: none !important;
+}
+.flex {
+  display: flex;
+}
+.relative {
+  display: relative;
+}
+.pointer {
+  cursor: pointer;
+}
+
+// align helpers
+
+.inline {
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+  display: inline !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.smart-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+// fieldset
+
+%legend {
+  display: block;
+  width: inherit;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  color: #8f9bb5;
+  font-weight: 600;
+}
+
+.legend {
+  @extend %legend;
+}
+fieldset {
+  background: #fff;
+  border: 1px solid #ededed;
+  margin-bottom: 1rem;
+  padding: 0 1rem 1rem;
+
+  legend {
+    @extend %legend;
+  }
+}
+
+.force-full {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.non-editable-cell {
+  padding: 0 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.full-width-column {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 0.5rem;
+}
+
+.ag-cell {
+  padding: 0;
+}
+
+%status {
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  text-transform: uppercase;
+  border-radius: 3px;
+  font-size: small;
+}
+%status-icon {
+  font-size: 1.2rem;
+  vertical-align: top;
+}
+
+.status {
+  /* project statuses */
+  &-draft {
+    @extend %status;
+    background: #939393;
+    &:before {
+      @extend %status-icon;
+      content: '◔';
+    }
+  }
+  &-inprogress {
+    @extend %status;
+    background: #03a9f4;
+    &:before {
+      @extend %status-icon;
+      content: '◑';
+    }
+  }
+  &-hasresponses {
+    @extend %status;
+    background: #ff9800;
+    &:before {
+      @extend %status-icon;
+      content: '◕';
+    }
+  }
+  &-completed {
+    @extend %status;
+    background: #8bc34a;
+    &:before {
+      @extend %status-icon;
+      content: '◍';
+    }
+  }
+  /* carrier answers statuses */
+  &-pending {
+    @extend %status;
+    background: #939393;
+    &:before {
+      @extend %status-icon;
+      vertical-align: unset;
+      content: '⦷';
+    }
+  }
+  &-replied {
+    @extend %status;
+    background: #ff9800;
+    &:before {
+      @extend %status-icon;
+      vertical-align: unset;
+      content: '⦿';
+    }
+  }
+  &-declined {
+    @extend %status;
+    background: #e91e63;
+    &:before {
+      @extend %status-icon;
+      vertical-align: unset;
+      content: '⦻';
+    }
+  }
+}
+
+.actions-hover {
+  opacity: 0;
+}
+
+.actions-hover-trigger {
+  cursor: pointer;
+  &:hover {
+    background: #fff;
+    & .actions-hover {
+      opacity: 1;
+    }
+  }
+}
+.main-action {
+  text-align: center;
+  margin: 2rem;
+  & > button {
+    padding: 1rem 6rem !important;
+  }
+}
+.card-action {
+  text-align: right;
+  & > button {
+    margin-top: 1rem !important;
+    margin-bottom: 2rem !important;
+    margin-right: 7rem !important;
+  }
+}
+
+.flat-button {
+  background: none !important;
+  border: none !important;
+}
+
+.list-links {
+  & > a {
+    display: block;
+    background: #00bcd4;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    max-width: 47rem;
+    position: relative;
+    &:hover {
+      color: #fff;
+      background: #00a7bd;
+    }
+    &:after {
+      content: 'answered';
+      right: 0;
+      position: absolute;
+      color: white;
+      margin-right: 1rem;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1.4rem;
+    }
+  }
+  .empty {
+    background: #f44336;
+    &:hover {
+      background: #da3024;
+    }
+    &:after {
+      content: 'empty';
+    }
+  }
+  .warning {
+    background: #ff9800;
+    &:hover {
+      background: #e68c05;
+    }
+    &:after {
+      content: 'attention';
+    }
+  }
+}
+
+.pseudo-center {
+  max-width: 47rem;
+}
+
+.empty-space {
+  background: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 1rem;
+  flex-direction: column;
+  & > p {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #666;
+  }
+  & > button {
+    margin: 1rem auto 0;
+    max-width: fit-content;
+  }
+}
+
+.ag-grid-header {
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e9edf3;
+}
+
+.action-status {
+  &-success svg {
+    fill: #00d68f;
+  }
+  &-danger svg {
+    fill: #ff5722;
+  }
+}
+
+/* default spinner */
+
+.main-spinner .spin-circle {
+  border-top-color: #2196f3 !important;
+  border-right-color: transparent;
+  border-bottom-color: #2196f3 !important;
+  border-left-color: #2196f3 !important;
+  font-size: 3rem !important;
+}
+
+/*
+This .scss loop will create "margin helpers" and "padding helpers" for use in your web projects.
+It will generate several classes such as:
+.m-r-10 which gives margin-right 10 pixels.
+.m-r-15 gives MARGIN to the RIGHT 15 pixels.
+.m-t-15 gives MARGIN to the TOP 15 pixels and so on.
+.p-b-5 gives PADDING to the BOTTOM of 5 pixels
+.p-l-40 gives PADDING to the LEFT of 40 pixels
+The first letter is "m" or "p" for MARGIN or PADDING
+Second letter is "t", "b", "l", or "r" for TOP, BOTTOM, LEFT, or RIGHT
+Third letter is the number of spacing in pixels. Adjust the amounts generated by editing the $spaceamounts variable below.
+*/
+
+$spaceamounts: (
+  5,
+  10,
+  15,
+  20,
+  25,
+  30,
+  35,
+  40,
+  45,
+  50,
+  75,
+  100
+); // Adjust this to include the pixel amounts you need.
+$sides: (top, bottom, left, right); // Leave this variable alone
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}
+
+/* theme resets */
+
+.advanced-pie-legend .legend-items-container .legend-items,
+nb-layout .blue-scrollbar {
+  scrollbar-face-color: #03a9f4 !important;
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #03a9f4 !important;
+  }
+}
+
+/* logo rewrite */
+
+.logo {
+  display: flex;
+  padding-left: 1.6rem;
+}
+.logo svg {
+  width: 48px;
+  & path {
+    fill: #c3002f !important;
+  }
+}
+.logo .main {
+  margin-top: 0.3rem;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.logo .second {
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.display-block {
+  display: inline-block;
+}
+
+/* header */
+
+nav {
+  padding: 0 !important;
+}
+
+.header-layout {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #fff;
+  padding: 1rem;
+  z-index: 1;
+  .user-name,
+  span {
+    color: #fff !important;
+  }
+  svg path {
+    fill: #fff !important;
+  }
+  svg g {
+    fill: #fff !important;
+  }
+
+  &.client {
+    background: #c3002f;
+  }
+  &.forwarder {
+    background: #165f99;
+  }
+}
+
+.card-delimiter {
+  height: 4px;
+  width: calc(100% + 2.8rem);
+  background: #e5e9ef;
+  margin-left: -1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 1.6rem;
+}
+
+/* TODO: dangerous CSS changes */
+
+.main-container-fixed {
+  position: sticky !important;
+  top: 0 !important;
+}
+.menu-sidebar {
+  overflow: unset !important;
+}
+nb-card-body {
+  background: #fafcfe !important;
+}
+
+/* typo */
+
+.card-big-title {
+  font-size: 1.2rem;
+  height: 2rem;
+  line-height: 2.3rem;
+}
+.created-by {
+  padding: 1rem;
+}
+.note {
+  color: #1a2138;
+  font-family: Open Sans, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.9rem;
+  display: inline-block;
+}
+.note:before {
+  content: '!';
+  background: #99acb5;
+  height: 1rem;
+  width: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 1rem;
+  color: #fff;
+  display: inline-block;
+}
+.help:before {
+  content: '?';
+  background: #ff9800;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 1.2rem;
+  color: #fff;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  top: -0.5rem;
+  font-size: 0.8rem;
+}
+.labels {
+  font-weight: 600;
+  color: #666;
+  padding-top: calc(0.375rem + 1px);
+  padding-bottom: calc(0.375rem + 1px);
+  margin-bottom: 0;
+  font-size: inherit;
+  line-height: 1.5;
+}
+.form-text {
+  padding-top: calc(0.375rem + 1px);
+  padding-bottom: calc(0.375rem + 1px);
+  margin-bottom: 0;
+  font-size: inherit;
+  line-height: 1.5;
+}
+
+/* fullscreen */
+.fullscreen {
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  margin: 0 !important;
+  ag-grid-angular {
+    height: calc(100vh - 70px) !important;
+  }
+  nb-card {
+    height: 100vh !important;
+  }
+}
+
+// ng-select
+.ng-select-container {
+  background-color: #f7f9fc !important;
+  border-color: #edf1f7 !important;
+  border-style: solid !important;
+  border-width: 1px !important;
+  color: #1a2138 !important;
+  font-family: Open Sans, sans-serif;
+  -webkit-appearance: none;
+  transition-duration: 0.15s;
+  transition-property: border, background-color, color, box-shadow;
+  transition-timing-function: ease-in;
+  height: 2.5rem !important;
+  line-height: 2.5rem;
+  font-weight: 600;
+}
+.ng-placeholder {
+  font-weight: 100;
+}
+.ng-dropdown-panel {
+  margin-left: 1rem;
+  width: calc(100% - 2rem) !important;
+}
+.ng-select .ng-select-container .ng-value-container .ng-input > input {
+  display: block;
+  margin-top: 0.3rem;
+}
+
+// tables with thumbs
+.tables-item {
+  border: 1px solid #bebebe;
+  border-radius: 3px;
+  height: 15rem;
+}
+.tables-thumb {
+  height: 10.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ecf0f6;
+  cursor: pointer;
+  &:hover {
+    background: #dce4ef;
+  }
+  &.empty {
+    background: #ffeb3b;
+    &:hover {
+      background: #fff6a8;
+    }
+  }
+  &.replied {
+    background: #9cff8a;
+    &:hover {
+      background: #74ff5c;
+    }
+  }
+}
+.tables-text {
+  padding: 1rem;
+}
+.tables-text span {
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.tables-add {
+  font-size: 7rem;
+  color: #00bcd4;
+}
+.ag-theme-balham .ag-ltr .ag-cell {
+  border-right: 1px solid #d9dcde !important;
+}
+.ag-theme-balham.saved .rag-red-outer {
+  border: solid 1px lightcoral !important;
+}
+
+.ag-theme-balham .ag-ltr .ag-cell.rag-red-outer-invalid  {
+  border: solid 1px lightcoral !important;
+}
+
+/* dropzone redesign */
+
+.empty-dropzone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18rem;
+}
+
+ngx-file-drop {
+  width: 100%;
+}
+.ngx-file-drop__drop-zone {
+  border-radius: 0 !important;
+  border: 5px dashed #bebebe !important;
+  // padding-top: 12rem;
+  // padding-bottom: 9rem;
+  height: 96% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ngx-file-drop__browse-btn {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.875rem;
+  background-color: #3366ff;
+  padding: 0.657rem 1rem;
+  margin-top: 2rem;
+}
+.ngx-file-drop__drop-zone-label {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #666;
+}
+.ngx-file-drop__content {
+  flex-direction: column;
+}
+
+#page-spinner {
+  position: absolute;
+  background: #e9edf3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  top: 2px;
+  opacity: 0.8;
+}
+.page-spinner-loading {
+  width: 120px;
+  height: 120px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  border-left: 4px solid #666;
+  border-right: 4px solid #666;
+  animation: load 1s linear infinite;
+  position: absolute;
+}
+/*
+.pace-done #page-spinner {
+  display: none !important;
+}
+*/
+
+// nb accordion overridings
+
+.nb-theme-default nb-accordion nb-accordion-item-body .item-body {
+  flex: none;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+
+// stepper override
+
+.short-stepper {
+  margin-top: 2rem;
+  display: block;
+  .header {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+// autocomplete ovverride
+
+.autocomplete-container {
+  box-shadow: none !important;
+  border: 1px solid #edf1f7;
+  & input {
+    background-color: #f7f9fc !important;
+  }
+}
+
+/* Not invited block */
+
+.not-invited {
+  &-wrapper {
+    width: 100%;
+    height: 20rem;
+    position: relative;
+  }
+  &-img {
+    background-image: url('./bg_img/table.jpg');
+    width: 100%;
+    height: 99%;
+    background-size: cover;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+  }
+  &-fog {
+    background: #165f99;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+  }
+  &-content {
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  &-message {
+    background: #fff;
+    padding: 3rem;
+  }
+  &-color {
+    color: #e16639;
+  }
+}
+
+// hacks
+
+ng-dropdown-panel.css-hack-1 {
+  max-width: 469px !important;
+  padding-right: 0;
+}
+// for hide tooltip in validation ag-grid
+.right.status-danger {
+  display: none !important;
+}

@@ -1,0 +1,16 @@
+<nb-card>
+  <nb-card-header>{{ header }}</nb-card-header>
+  <nb-card-body>
+    <span>{{message}}</span>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="inline-right">
+      <button nbButton hero status="primary" type="button" (click)="choose(false)" >
+        Cancel
+      </button>
+      <button nbButton hero status="success" type="submit" class="m-l-10" (click)="choose(true)">
+        OK
+      </button>
+    </div>
+  </nb-card-footer>
+</nb-card>
