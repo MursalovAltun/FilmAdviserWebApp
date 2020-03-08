@@ -112,7 +112,7 @@ export class NgxLoginComponent implements OnInit {
             console.log(x, this.returnUrl);
             if (x) {
               setTimeout(() => {
-                return this.router.navigate(['/pages/dashboard']);
+                return this.router.navigate(['/pages/user/profile']);
               }, this.redirectDelay);
             }
             if (x && this.returnUrl) {
