@@ -1,0 +1,15 @@
+<span class="star-rating">
+  <ng-container *ngIf="!forDisplay">
+    <nb-icon *ngFor="let n of range; let $index = index;"
+              status="info"
+              [icon]="isMarked($index)"
+              (click)="mark($index)"
+              [options]="iconOptions"></nb-icon>
+  </ng-container>
+  <ng-container *ngIf="forDisplay">
+    <nb-icon *ngFor="let n of range; let $index = index;"
+              status="info"
+              [icon]="isMarked($index)"
+              [options]="iconOptions"></nb-icon>
+  </ng-container>
+</span>

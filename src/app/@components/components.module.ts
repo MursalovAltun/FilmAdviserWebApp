@@ -8,12 +8,25 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgxValidationMessageComponent } from './validation-message/validation-message.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { NbIconModule } from '@nebular/theme';
 
-const COMPONENTS = [NgxValidationMessageComponent];
+const COMPONENTS = [
+  NgxValidationMessageComponent,
+  StarRatingComponent,
+];
+
+const NEBULAR_MODULES = [
+  NbIconModule,
+];
 
 @NgModule({
-  imports: [FormsModule, CommonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ...NEBULAR_MODULES,
+  ],
   exports: [...COMPONENTS],
-  declarations: [...COMPONENTS]
+  declarations: [...COMPONENTS],
 })
 export class ComponentsModule {}

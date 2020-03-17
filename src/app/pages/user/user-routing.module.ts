@@ -8,6 +8,11 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module')
       .then(m => m.ProfileModule),
   },
+  {
+    path: 'movie',
+    loadChildren: () => import('./movie/movie.module')
+      .then(m => m.MovieModule),
+  },
   { path: '', component: UserComponent },
 ];
 

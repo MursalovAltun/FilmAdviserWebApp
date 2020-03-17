@@ -1,0 +1,69 @@
+<nb-card *ngIf="!loading">
+  <nb-card-header>Profile details</nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-md-12">
+        <form novalidate [formGroup]="userDetailsForm" (ngSubmit)="update()">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input formControlName="firstName" placeholder="Enter your first name" id="firstName" class="form-control"
+              type="text" nbInput>
+            <ngx-validation-message
+              label="First name"
+              [showRequired]="
+                firstName?.errors?.required && firstName.touched
+              "
+            ></ngx-validation-message>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input formControlName="lastName" placeholder="Enter your last name" id="lastName" class="form-control"
+              type="text" nbInput>
+            <ngx-validation-message
+              label="Last name"
+              [showRequired]="
+                lastName?.errors?.required && lastName.touched
+              "
+            ></ngx-validation-message>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="timezone">Timezone</label>
+            <ng-select
+              [items]="timezones"
+              bindLabel="displayName"
+              bindValue="id"
+              formControlName="timeZoneId"
+              class="col-md-4 pl-0 css-hack-1"
+              style="width: 21rem;"
+              placeholder="Select timezone"
+              appendTo="body"
+            >
+            </ng-select>
+          </div> -->
+          <div class="form-group">
+            <label for="timezone">Timezone</label><br>
+            <nb-select id="timezone" formControlName="timeZoneId">
+              <nb-option *ngFor="let timezone of timezones"
+                          [value]="timezone.id">{{timezone.displayName}}</nb-option>
+            </nb-select>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input formControlName="email" placeholder="Enter your email" id="email" class="form-control" type="text"
+              nbInput>
+          </div>
+
+          <div class="main-action">
+            <button type="submit" nbButton status="success" size="giant" [nbSpinner]="processUpdate"
+              [disabled]="processUpdate">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

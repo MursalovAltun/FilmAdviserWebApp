@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   getMenuItems() {
-    const userLink = this.user ? '/pages/profile/details' : '';
+    const userLink = this.user ? '/pages/user/profile/details' : '';
     return [
       { title: 'Profile', link: userLink },
       { title: 'Change password', link: '/pages/profile/change-password'},
