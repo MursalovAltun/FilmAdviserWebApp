@@ -18,6 +18,7 @@ import { NbAuthModule } from '@nebular/auth';
 import { SettingsData } from '../../interfaces/common/settings';
 import { SettingsService } from './services/settings.service';
 import { TimeZoneService } from './services/timezone.service';
+import { MovieService } from './services/movie.service';
 
 const API = [UsersApi, CountriesApi, SettingsApi, HttpService];
 
@@ -27,8 +28,9 @@ const SERVICES = [
   { provide: SettingsData, useClass: SettingsService }
 ];
 
-const BIDTOOLSETVICES = [
+const FILMADVISERSERVICES = [
   TimeZoneService,
+  MovieService,
 ];
 
 @NgModule({
@@ -38,7 +40,7 @@ export class CommonBackendModule {
   static forRoot(): ModuleWithProviders {
     return <ModuleWithProviders>{
       ngModule: CommonBackendModule,
-      providers: [...API, ...SERVICES, ...BIDTOOLSETVICES]
+      providers: [...API, ...SERVICES, ...FILMADVISERSERVICES]
     };
   }
 }

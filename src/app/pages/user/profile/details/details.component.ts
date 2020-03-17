@@ -56,7 +56,6 @@ export class DetailsComponent implements OnInit {
   update() {
     if (!this.userDetailsForm.valid) {
       ValidationHelpers.validateAllFormFields(this.userDetailsForm);
-      console.log('Form - ', this.userDetailsForm.value);
       return;
     }
 
@@ -65,7 +64,6 @@ export class DetailsComponent implements OnInit {
       this.ts.success('Profile details are successfully updated', 'Profile details update');
     }, err => {
       this.ts.danger('Something went wrong', 'Error');
-      console.log('Error - ', err);
     });
   }
 }

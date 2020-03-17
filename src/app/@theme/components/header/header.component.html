@@ -23,7 +23,7 @@
 
   <div class="header-container">
     <nb-actions size="small">
-      <nb-action class="user-action" *nbIsGranted="['view', 'current-user']">
+      <nb-action class="user-action">
         <nb-user
           *ngIf="user"
           [nbContextMenu]="userMenu"

@@ -1,0 +1,62 @@
+<nb-card class="main-spinner" *ngIf="!loading">
+  <nb-card-header>
+    <div class="smart-line">
+      <div class="card-big-title">
+        <nav class="navigation">
+          <a
+            [routerLink]="['../../', 'list']"
+            class="link back-link"
+            aria-label="Back">
+            <nb-icon icon="arrow-back"></nb-icon>
+            {{movie.movieTitle}}
+          </a>
+        </nav>
+      </div>
+      <div class="d-flex align-items-center">
+        <div>
+          <ngx-star-rating [maxScore]="10" [score]="movie.voteAverage"></ngx-star-rating>
+        </div>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+
+      <div class="col-md-12">
+        <p>{{movie.tagline}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <p>Overview: {{movie.overview}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <p>Genres: {{movie.genresNames | separate}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <p>Languages: {{movie.languages | separate}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <p>Companies: {{movie.companies | separate}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <p>Countries: {{movie.countries | separate}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <p>Budget: {{movie.budget | currency}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <p>Revenue: {{movie.revenue | currency}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <p>Release date: {{movie.releaseDate}}</p>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

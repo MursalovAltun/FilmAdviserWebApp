@@ -52,7 +52,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.user = this.userStore.getUser();
-    console.log('User - ', this.user);
     this.userMenu = this.getMenuItems();
 
     const { xl } = this.breakpointService.getBreakpointsMap();

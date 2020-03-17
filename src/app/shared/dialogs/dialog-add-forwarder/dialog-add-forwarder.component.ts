@@ -39,7 +39,6 @@ export class DialogAddForwarderComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit', this.form.value);
     if (!this.form.valid) {
       ValidationHelpers.validateAllFormFields(this.form);
       return;

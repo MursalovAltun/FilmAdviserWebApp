@@ -109,7 +109,6 @@ export class NgxLoginComponent implements OnInit {
         if (result.isSuccess()) {
           this.messages = result.getMessages();
           this.initUserService.initCurrentUser().subscribe(x => {
-            console.log(x, this.returnUrl);
             if (x) {
               setTimeout(() => {
                 return this.router.navigate(['/pages/user/profile']);

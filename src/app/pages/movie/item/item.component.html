@@ -1,0 +1,8 @@
+<nb-card>
+  <nb-card-header>{{movie.movieTitle}}</nb-card-header>
+  <nb-card-body>
+    <div [routerLink]="['../details', movie.id]" class="pointer">
+      <img class="img-fluid" [attr.src]="movie.posterPath | poster" [attr.alt]="movie.title">
+    </div>
+  </nb-card-body>
+</nb-card>

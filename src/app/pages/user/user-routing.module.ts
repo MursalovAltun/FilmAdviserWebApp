@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'movie',
-    loadChildren: () => import('./movie/movie.module')
+    loadChildren: () => import('../movie/movie.module')
       .then(m => m.MovieModule),
   },
   { path: '', component: UserComponent },

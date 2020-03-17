@@ -34,10 +34,8 @@ export class UsersApi {
   }
 
   getCurrent(): Observable<any> {
-    console.log(`${this.apiController}/current`);
     return this.api.get(`${this.apiController}/current`)
       .pipe(map(data => {
-        console.log('Data - ', data);
         const picture = `${this.api.apiUrl}/${this.apiController}/${data.id}/photo`;
         return { ...data, picture };
       }));

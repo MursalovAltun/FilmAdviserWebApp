@@ -12,6 +12,11 @@ const routes: Routes = [{
   component: PagesComponent,
   children: [
     {
+      path: 'dashboard',
+      loadChildren: () => import('./movie/movie.module')
+        .then(m => m.MovieModule),
+    },
+    {
       path: 'user',
       canActivate: [AuthGuard],
       loadChildren: () => import('./user/user.module')

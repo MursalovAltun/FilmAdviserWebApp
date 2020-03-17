@@ -138,7 +138,6 @@ export class NgxRegisterComponent implements OnInit {
             return this.router.navigate(['/pages/dashboard']);
           });
         } else {
-          console.log(result);
           this.errors[0] = result.getResponse().Message;
         }
 

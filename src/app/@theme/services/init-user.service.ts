@@ -18,10 +18,8 @@ export class InitUserService {
         protected themeService: NbThemeService) { }
 
     initCurrentUser(): Observable<User> {
-      console.log('Init current');
       return this.usersService.getCurrentUser()
             .pipe(tap((user: User) => {
-              console.log('Uesr - ', user);
                 if (user) {
                     this.userStore.setUser(user);
                     if (user.settings && user.settings.themeName) {

@@ -46,7 +46,6 @@ export class OptimizationService {
       });
 
     const endTime = Date.now();
-    console.log('FullCherryPick time', endTime - startTime);
     return {
       totalBaseline,
       totalPrice,
@@ -144,7 +143,6 @@ export class OptimizationService {
       });
 
     const endTime = Date.now();
-    console.log('FullCherryPickOriginDest time', endTime - startTime);
     return {
       totalBaseline,
       totalPrice,
