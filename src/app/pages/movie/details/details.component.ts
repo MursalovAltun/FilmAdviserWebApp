@@ -22,14 +22,17 @@ export class DetailsComponent implements OnInit {
     this.spinner.toggleSpinnerVisibility();
     this.loading = true;
     const movieId = parseInt(this._activatedRoute.snapshot.params['id'], 10);
-    console.log('Movie id - ', movieId);
     if (!isNaN(movieId)) {
-      this._movieService.getDetailsById(movieId).pipe(first()).subscribe(movieDetails => {
+      this._movieService.getDetailsById(movieId, 'videos').pipe(first()).subscribe(movieDetails => {
         this.movie = movieDetails;
         this.loading = false;
         this.spinner.toggleSpinnerVisibility();
       });
     }
+  }
+
+  public get totalVotes(): string {
+    return `Total votes count - ${this.movie.voteCount}`;
   }
 
 }

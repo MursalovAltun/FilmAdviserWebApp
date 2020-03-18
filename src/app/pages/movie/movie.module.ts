@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbCardModule, NbSpinnerModule, NbButtonModule, NbSelectModule, NbIconModule } from '@nebular/theme';
+import { NbCardModule, NbSpinnerModule, NbButtonModule, NbSelectModule, NbIconModule, NbTooltipModule } from '@nebular/theme';
 import { MovieComponent } from './movie.component';
 import { ListComponent } from './list/list.component';
 import { MovieRoutingModule } from './movie-routing.module';
@@ -18,6 +18,7 @@ const NEBULAR_MODULES = [
   NbCardModule,
   NbSelectModule,
   NbIconModule,
+  NbTooltipModule,
 ];
 
 const COMPONENTS = [

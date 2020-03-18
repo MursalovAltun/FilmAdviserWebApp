@@ -13,7 +13,7 @@
         </nav>
       </div>
       <div class="d-flex align-items-center">
-        <div>
+        <div [nbTooltip]="totalVotes" nbTooltipPlacement="top" nbTooltipTrigger="hover" nbTooltipStatus="info">
           <ngx-star-rating [maxScore]="10" [score]="movie.voteAverage"></ngx-star-rating>
         </div>
       </div>
@@ -21,41 +21,66 @@
   </nb-card-header>
   <nb-card-body>
     <div class="row">
+      <div class="col-md-12 d-flex">
+        <div class="col-md-4">
+          <img class="img-fluid" [attr.src]="movie.posterPath | poster" [attr.alt]="movie.title">
+        </div>
 
-      <div class="col-md-12">
-        <p>{{movie.tagline}}</p>
+        <div class="col-md-8">
+          <div class="col-md-12">
+            <p>{{movie.tagline}}</p>
+          </div>
+
+          <div class="col-md-12">
+            <p>Overview: {{movie.overview}}</p>
+          </div>
+
+          <div class="col-md-12">
+            <p>Genres: {{movie.genres | separate}}</p>
+          </div>
+
+          <div class="col-md-12">
+            <p>Languages: {{movie.languages | separate}}</p>
+          </div>
+
+          <div class="col-md-12">
+            <p>Companies: {{movie.productionCompanies | separate}}</p>
+          </div>
+
+          <div class="col-md-12">
+            <p>Countries: {{movie.productionCountries | separate}}</p>
+          </div>
+
+          <div class="col-md-12">
+            <p>Budget: {{movie.budget | currency}}</p>
+          </div>
+
+          <div class="col-md-12">
+            <p>Revenue: {{movie.revenue | currency}}</p>
+          </div>
+
+          <div class="col-md-12">
+            <p>Release date: {{movie.releaseDate}}</p>
+          </div>
+        </div>
+
       </div>
 
-      <div class="col-md-12">
-        <p>Overview: {{movie.overview}}</p>
-      </div>
+      <div class="col-md-12 pt-4" *ngIf="movie.trailers && movie.trailers.length > 0">
+        <div class="col-md-12">
+          <h2>Trailers</h2>
+        </div>
 
-      <div class="col-md-12">
-        <p>Genres: {{movie.genresNames | separate}}</p>
-      </div>
-
-      <div class="col-md-12">
-        <p>Languages: {{movie.languages | separate}}</p>
-      </div>
-
-      <div class="col-md-12">
-        <p>Companies: {{movie.companies | separate}}</p>
-      </div>
-
-      <div class="col-md-12">
-        <p>Countries: {{movie.countries | separate}}</p>
-      </div>
-
-      <div class="col-md-12">
-        <p>Budget: {{movie.budget | currency}}</p>
-      </div>
-
-      <div class="col-md-12">
-        <p>Revenue: {{movie.revenue | currency}}</p>
-      </div>
-
-      <div class="col-md-12">
-        <p>Release date: {{movie.releaseDate}}</p>
+        <div class="col-md-12">
+          <div>
+            <ngx-youtube-embed class="py-3" *ngFor="let video of movie.trailers"
+                              [key]="video.key"
+                              [responsive]="true"
+                              [allowFullScreen]="true"
+                              [title]="video.name">
+            </ngx-youtube-embed>
+          </div>
+        </div>
       </div>
     </div>
   </nb-card-body>

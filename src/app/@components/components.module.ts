@@ -10,10 +10,12 @@ import { CommonModule } from '@angular/common';
 import { NgxValidationMessageComponent } from './validation-message/validation-message.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { NbIconModule } from '@nebular/theme';
+import { YoutubeEmbedComponent } from './youtube-embed/youtube-embed.component';
 
 const COMPONENTS = [
   NgxValidationMessageComponent,
   StarRatingComponent,
+  YoutubeEmbedComponent,
 ];
 
 const NEBULAR_MODULES = [

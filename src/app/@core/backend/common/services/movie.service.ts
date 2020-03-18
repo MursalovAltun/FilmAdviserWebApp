@@ -33,9 +33,11 @@ export class MovieService {
   /*
   / Gets detailed info about movie by id
   */
-  getDetailsById(id: number): Observable<Movie> {
+  getDetailsById(id: number, append: string): Observable<Movie> {
     return this.http
-      .get(`${this.apiUrl}/Movie/${id}`)
+      .get(`${this.apiUrl}/Movie/${id}`, {
+        params: new HttpParams().set('append', append),
+      })
       .pipe(
         map((x: any) => {
           return new Movie(x);

@@ -1,0 +1,22 @@
+<div>
+  <h3>{{title}}</h3>
+  <div style="--aspect-ratio: 16/9;">
+    <iframe *ngIf="!allowFullScreen"
+            [attr.width]="width"
+            [attr.height]="height"
+            [attr.src]="embedUrl"
+            frameborder="0"
+            [attr.allow]="allow"
+            [ngClass]="{'responsive-iframe': responsive}">
+    </iframe>
+
+    <iframe *ngIf="allowFullScreen"
+            [attr.width]="width"
+            [attr.height]="height"
+            [attr.src]="embedUrl"
+            frameborder="0"
+            [attr.allow]="allow"
+            allowfullscreen [ngClass]="{'responsive-iframe': responsive}">
+    </iframe>
+  </div>
+</div>
